@@ -5,7 +5,7 @@ In this Android project assessment the following APIs and components it will be 
     * Software Architecture: MVVM + Clean Architecture
     * Layers Separation:
 
-![Layers Separation used in this project](https://imageup.me/mvvm-clean-architecture-scheme)
+![Layers Separation used in this project](https://github.com/LeaCuvelo/CuveloShopFullyTest/blob/main/MVVM-CleanArchitectureLayers.png)
 
     * DB: Room
     * Networking: Retrofit
