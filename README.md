@@ -5,7 +5,7 @@ In this Android project assessment the following APIs and components it will be 
     * Software Architecture: MVVM + Clean Architecture
     * Layers Separation:
 
-![Layers Separation used in this project](https://cursokotlin.com/wp-content/uploads/2021/05/Android-Clean-Architecture.png)
+![Layers Separation used in this project](https://imageup.me/mvvm-clean-architecture-scheme)
 
     * DB: Room
     * Networking: Retrofit
