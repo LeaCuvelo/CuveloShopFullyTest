@@ -2,6 +2,7 @@ package com.cuvelo.shopfully.test.di
 
 import com.cuvelo.shopfully.data.datasources.RemoteFlyersDataSource
 import com.cuvelo.shopfully.test.data.FlyerRemoteServer
+import com.cuvelo.shopfully.test.data.FlyerRemoteServerImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,7 +29,6 @@ class NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-
     @Provides
     @Singleton
     fun provideRemoteDateService(retrofit: Retrofit): FlyerRemoteServer =
@@ -36,8 +36,7 @@ class NetworkModule {
 
     @Provides
     fun provideRemoteDataSource(flyerRemoteServer: FlyerRemoteServer ): RemoteFlyersDataSource {
-        return EPICRemoteServerImpl(EPICRemoteServer)
+        return FlyerRemoteServerImpl(flyerRemoteServer)
     }
-
 
 }

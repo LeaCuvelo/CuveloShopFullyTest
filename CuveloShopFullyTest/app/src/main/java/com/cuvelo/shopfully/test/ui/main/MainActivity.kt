@@ -1,4 +1,4 @@
-package com.cuvelo.shopfully.test.ui
+package com.cuvelo.shopfully.test.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

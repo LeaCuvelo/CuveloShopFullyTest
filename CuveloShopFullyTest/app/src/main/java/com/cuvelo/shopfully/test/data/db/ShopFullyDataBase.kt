@@ -10,4 +10,6 @@ import androidx.room.RoomDatabase
 )
 abstract class ShopFullyDataBase : RoomDatabase() {
 
+    abstract fun flyerDao(): FlyerDao
+
 }
