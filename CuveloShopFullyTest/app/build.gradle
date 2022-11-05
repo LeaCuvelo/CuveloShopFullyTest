@@ -60,6 +60,14 @@ android {
 }
 
 dependencies {
+    //Data module
+    implementation project(path: ':data')
+
+    //Domain module
+    implementation project(path: ':domain')
+
+    //UseCases module
+    implementation project(path: ':usecases')
 
     //Core - Material - ConstraintLayout
     implementation 'androidx.core:core-ktx:1.8.0'

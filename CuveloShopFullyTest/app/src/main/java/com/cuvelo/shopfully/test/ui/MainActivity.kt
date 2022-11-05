@@ -1,7 +1,8 @@
-package com.cuvelo.shopfully.test
+package com.cuvelo.shopfully.test.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.cuvelo.shopfully.test.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
