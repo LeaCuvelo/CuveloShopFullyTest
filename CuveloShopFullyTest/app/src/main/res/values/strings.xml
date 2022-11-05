@@ -6,6 +6,10 @@
 
     <!-- Main -->
     <string name="main_item_flyer_image_content_description">Flyer Image</string>
+    <string name="error_state_image_content_description">Error Image</string>
+    <string name="error_state_title">Error loading flyers, please try again later</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

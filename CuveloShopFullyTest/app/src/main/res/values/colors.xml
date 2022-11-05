@@ -4,6 +4,7 @@
     <color name="primary_color">#2b2c34</color>
     <color name="primary_variant_color">#e2e2e3</color>
     <color name="secondary_color">#d2243c</color>
+    <color name="secondary_color_90_alpha">#e6d2243c</color>
     <color name="secondary_variant_color">#94949a</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

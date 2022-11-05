@@ -33,8 +33,6 @@ class MainFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
 
-
-
         return binding.root
     }
 
