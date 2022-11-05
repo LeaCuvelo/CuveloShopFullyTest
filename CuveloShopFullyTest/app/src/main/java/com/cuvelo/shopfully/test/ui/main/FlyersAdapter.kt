@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.cuvelo.shopfully.domain.FlyerDataDomain
+import com.cuvelo.shopfully.test.R
 import com.cuvelo.shopfully.test.databinding.ItemFlyerBinding
 import com.cuvelo.shopfully.test.ui.common.FlyerDiffCallback
+import com.squareup.picasso.Picasso
 
 class FlyersAdapter (private val listener: (String) -> Unit) :
     RecyclerView.Adapter<FlyersAdapter.FlyerViewHolder>() {
@@ -41,6 +43,13 @@ class FlyersAdapter (private val listener: (String) -> Unit) :
 
         fun bind(flyer: FlyerDataDomain) {
             binding.flyer = flyer
+
+            Picasso.get()
+                .load("https://it-it-media.shopfully.cloud/images/volantini/${flyer.id}@3x.jpg")
+                .placeholder(R.drawable.ic_placeholder)
+                .error(R.drawable.ic_error)
+                .into(binding.ivFlyerBackground)
+
         }
     }
 

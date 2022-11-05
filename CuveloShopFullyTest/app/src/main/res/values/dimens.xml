@@ -4,5 +4,12 @@
     <!-- Splash -->
     <dimen name="splash_inset_value">52dp</dimen>
 
+    <!-- Main -->
+    <dimen name="main_item_height">200dp</dimen>
+    <dimen name="main_item_margin">10dp</dimen>
+    <dimen name="main_item_title_text_size">20sp</dimen>
+
+
+
 
 </resources>
