@@ -2,6 +2,7 @@ package com.cuvelo.shopfully.test.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.findNavController
@@ -25,20 +26,26 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
 
-        binding.ivFilterIcon.setOnClickListener {
-            val mainFragment = getMainFragment()
-            if(!filterState){
+        with(binding) {
 
-                mainFragment?.filterReadFlyers()
-                filterState = true
-            }
-            else{
-                mainFragment?.removeFilterReadFlyers()
-                filterState = false
+            setSupportActionBar(toolbar)
+
+            ivFilterIcon.setOnClickListener {
+                val mainFragment = getMainFragment()
+                if(!filterState){
+                    mainFragment?.filterReadFlyers()
+                    ivFilterIcon.isSelected = true
+                    filterState = true
+                }
+                else{
+                    mainFragment?.removeFilterReadFlyers()
+                    ivFilterIcon.isSelected = false
+                    filterState = false
+                }
             }
         }
+
     }
 
     private fun getMainFragment(): MainFragment? {
@@ -52,5 +59,20 @@ class MainActivity : AppCompatActivity() {
         }
         return null
     }
+
+    fun hideReadFilterIcon(){
+        binding.ivFilterIcon.visibility = View.GONE
+    }
+
+    fun showReadFilterIcon(){
+        binding.ivFilterIcon.visibility = View.VISIBLE
+    }
+
+    fun unselectedFilterIcon(){
+        binding.ivFilterIcon.isSelected = false
+        filterState = false
+    }
+
+
 
 }

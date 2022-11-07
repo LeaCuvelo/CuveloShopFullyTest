@@ -12,6 +12,7 @@ import com.cuvelo.shopfully.test.R
 import com.cuvelo.shopfully.test.analytics.StreamFully
 import com.cuvelo.shopfully.test.analytics.StreamFullyEvent
 import com.cuvelo.shopfully.test.databinding.FragmentDetailBinding
+import com.cuvelo.shopfully.test.ui.main.MainActivity
 import com.squareup.picasso.Picasso
 import java.util.*
 import kotlin.collections.HashMap
@@ -37,6 +38,8 @@ class DetailFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
 
+        (activity as MainActivity).hideReadFilterIcon()
+
         return binding.root
     }
 
@@ -44,7 +47,6 @@ class DetailFragment : Fragment() {
 
         with(binding) {
             tvFylerTitleDetail.text = args.title
-
 
             Picasso.get()
                 .load("https://it-it-media.shopfully.cloud/images/volantini/${args.id}@3x.jpg")

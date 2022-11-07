@@ -36,7 +36,7 @@
 
                 <ImageView
                     android:id="@+id/iv_filter_icon"
-                    android:src="@drawable/ic_filter"
+                    android:src="@drawable/selector_read_filter_icon"
                     android:layout_marginEnd="@dimen/main_filter_margin_end"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"

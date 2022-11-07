@@ -74,6 +74,9 @@ class MainFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.getFlyers()
+        (activity as MainActivity).showReadFilterIcon()
+        (activity as MainActivity).unselectedFilterIcon()
+
     }
 
     fun filterReadFlyers(){

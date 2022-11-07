@@ -1,25 +1,12 @@
 package com.cuvelo.shopfully.test.ui.main
 
 import android.content.Context
-import android.util.AttributeSet
 import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 
-class GridLayoutManagerWrapper : GridLayoutManager {
-
-    constructor(context: Context) : super(context,2) {
-
-    }
-
-    constructor(
-        context: Context?,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
-
-    }
+class GridLayoutManagerWrapper(context: Context) : GridLayoutManager(context, 2) {
 
     override fun onLayoutChildren(recycler: RecyclerView.Recycler?, state: RecyclerView.State?) {
         try {
@@ -32,4 +19,5 @@ class GridLayoutManagerWrapper : GridLayoutManager {
     override fun supportsPredictiveItemAnimations(): Boolean {
         return false
     }
+
 }
