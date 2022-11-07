@@ -13,6 +13,7 @@ In this Android project assessment the following APIs and components it will be 
     * Pinch to zoom library: https://github.com/jsibbold/zoomage
     * DI: Hilt
     * Unit Test: Mokk
+    * Communication between Activity and Fragment, using viewmodel approach [Android Documentation](https://developer.android.com/guide/fragments/communicate)
 
 
 Endpoints API consumed:
