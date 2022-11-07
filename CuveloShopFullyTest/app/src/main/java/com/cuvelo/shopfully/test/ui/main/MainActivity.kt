@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        binding.lifecycleOwner = this
         setContentView(binding.root)
     }
 

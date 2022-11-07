@@ -24,11 +24,9 @@ class MainViewModel @Inject constructor(
     private val _progressBarVisibility = MutableLiveData<Boolean>()
     val progressBarVisibility: LiveData<Boolean> get() = _progressBarVisibility
 
-    private val _errorStateVisibility = MutableLiveData<Boolean>()
-    val errorStateVisibility: LiveData<Boolean> get() = _errorStateVisibility
-
     private val _flyers = MutableLiveData<List<FlyerDataDomain>>()
     val flyers get() = _flyers
+
 
     fun getFlyers(){
         viewModelScope.launch {
@@ -38,17 +36,14 @@ class MainViewModel @Inject constructor(
 
     private suspend fun fetchFlyers() {
         _progressBarVisibility.value = true
-        _errorStateVisibility.value = false
 
         val result  = getFlyersUseCase.invoke()
 
         try {
             _flyers.value = result
             _progressBarVisibility.value = false
-            _errorStateVisibility.value = false
         } catch (e: Exception) {
             _progressBarVisibility.value = false
-            _errorStateVisibility.value = true
             _flyers.value = result
             Log.e(TAG,e.toString())
         }
