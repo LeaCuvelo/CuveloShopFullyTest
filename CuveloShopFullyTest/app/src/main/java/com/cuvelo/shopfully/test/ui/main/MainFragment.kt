@@ -57,10 +57,10 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun navigateToDetail(flyerTitle: String, flyerId: String){
+    private fun navigateToDetail(flyerTitle: String, flyerId: String, flyerRetailerId: String, flyerRead: Boolean, position: Int){
         if(isOnline(context)){
             viewModel.markAsRead(flyerId)
-            val action = MainFragmentDirections.actionMainFragmentToDetailFragment(flyerTitle, flyerId)
+            val action = MainFragmentDirections.actionMainFragmentToDetailFragment(flyerTitle, flyerId, flyerRetailerId, position, flyerRead)
             findNavController().navigate(action)
         }
         else{

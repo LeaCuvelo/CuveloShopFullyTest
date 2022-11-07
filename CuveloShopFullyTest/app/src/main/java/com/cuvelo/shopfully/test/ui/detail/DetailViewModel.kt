@@ -5,5 +5,6 @@ import javax.inject.Inject
 
 class DetailViewModel @Inject constructor() : ViewModel(){
 
+
 }
 

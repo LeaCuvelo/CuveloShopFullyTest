@@ -27,6 +27,15 @@
         <argument
             android:name="id"
             app:argType="string" />
+        <argument
+            android:name="retailer_id"
+            app:argType="string" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
+        <argument
+            android:name="first_read"
+            app:argType="boolean" />
     </fragment>
 
 </navigation>

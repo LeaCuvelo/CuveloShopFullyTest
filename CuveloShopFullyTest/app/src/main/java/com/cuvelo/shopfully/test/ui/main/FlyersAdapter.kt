@@ -10,7 +10,7 @@ import com.cuvelo.shopfully.test.databinding.ItemFlyerBinding
 import com.cuvelo.shopfully.test.ui.common.FlyerDiffCallback
 import com.squareup.picasso.Picasso
 
-class FlyersAdapter (private val listener: (String, String) -> Unit) :
+class FlyersAdapter (private val listener: (String, String, String, Boolean, Int ) -> Unit) :
     RecyclerView.Adapter<FlyersAdapter.FlyerViewHolder>() {
 
     var flyersList: List<FlyerDataDomain> = arrayListOf()
@@ -32,7 +32,7 @@ class FlyersAdapter (private val listener: (String, String) -> Unit) :
     override fun onBindViewHolder(holder: FlyerViewHolder, position: Int) {
         val flyer = flyersList[position]
         holder.bind(flyer)
-        holder.itemView.setOnClickListener { listener(flyer.title, flyer.id) }
+        holder.itemView.setOnClickListener { listener(flyer.title, flyer.id, flyer.retailerId, flyer.read, position) }
     }
 
     override fun getItemCount(): Int = flyersList.size
