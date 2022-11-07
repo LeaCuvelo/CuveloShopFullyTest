@@ -45,6 +45,7 @@ class DetailFragment : Fragment() {
         with(binding) {
             tvFylerTitleDetail.text = args.title
 
+
             Picasso.get()
                 .load("https://it-it-media.shopfully.cloud/images/volantini/${args.id}@3x.jpg")
                 .placeholder(R.drawable.ic_placeholder)
@@ -54,6 +55,7 @@ class DetailFragment : Fragment() {
 
     }
 
+    //region StreamFully
 
     override fun onStart() { //Called when UI is visible to user
         super.onStart()
@@ -88,6 +90,7 @@ class DetailFragment : Fragment() {
     override fun onStop() { //Called when UI is no longer visible to user
         super.onStop()
 
+        //Finish Session Benchmark
         val date = Date()
         val sessionFinished = date.time
 
@@ -108,6 +111,7 @@ class DetailFragment : Fragment() {
         streamFully.process(streamFullyEvent)
     }
 
+    //endregion StreamFully
 
 
 }
