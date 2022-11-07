@@ -18,7 +18,6 @@ class GetFlyersUseCase(private val repository: FlyersRepository) {
             repository.clearFlyersInDataBase()
             repository.insertFlyersInDataBase(flyersUpdatedWithReadColumn)
             flyersUpdatedWithReadColumn
-
         }else{
             repository.getAllFromDataBase()
         }
