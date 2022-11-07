@@ -22,6 +22,7 @@ class FlyersAdapter (private val listener: (String, String, String, Boolean, Int
             flyersList = newList
             result.dispatchUpdatesTo(this)
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlyerViewHolder {

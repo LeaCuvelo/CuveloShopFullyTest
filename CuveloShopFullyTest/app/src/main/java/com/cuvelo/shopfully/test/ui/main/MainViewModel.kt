@@ -55,4 +55,10 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun filterReadFlyers(){
+        val onlyReadFlyers = _flyers.value?.filter { it.read  }
+        _flyers.value = onlyReadFlyers!!
+    }
+
+
 }

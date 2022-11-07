@@ -12,6 +12,8 @@
     <dimen name="main_error_state_title_margin">10dp</dimen>
     <dimen name="main_error_state_title_text_size">30sp</dimen>
     <dimen name="main_margin_read_check">5dp</dimen>
+    <dimen name="main_filter_margin_end">15dp</dimen>
+
 
     <!-- Detail -->
     <dimen name="detail_margin">30dp</dimen>

@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.cuvelo.shopfully.test.R
 import com.cuvelo.shopfully.test.databinding.FragmentMainBinding
 import com.cuvelo.shopfully.test.ui.utils.isOnline
@@ -40,6 +41,8 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.rvFlyers.layoutManager = GridLayoutManagerWrapper(requireContext())
+
         flyersAdapter = FlyersAdapter(::navigateToDetail)
         binding.rvFlyers.adapter = flyersAdapter
 
@@ -70,6 +73,14 @@ class MainFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        viewModel.getFlyers()
+    }
+
+    fun filterReadFlyers(){
+        viewModel.filterReadFlyers()
+    }
+
+    fun removeFilterReadFlyers(){
         viewModel.getFlyers()
     }
 
