@@ -15,11 +15,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class MainFragmentViewModel @Inject constructor(
     private val getFlyersUseCase: GetFlyersUseCase,
     private val markFlyerAsReadUseCase: MarkFlyerAsReadUseCase) : ViewModel() {
 
-    private val TAG = "MainViewModel"
+    private val TAG = "MainFragmentViewModel"
 
     private val _progressBarVisibility = MutableLiveData<Boolean>()
     val progressBarVisibility: LiveData<Boolean> get() = _progressBarVisibility
@@ -56,9 +56,8 @@ class MainViewModel @Inject constructor(
     }
 
     fun filterReadFlyers(){
-        val onlyReadFlyers = _flyers.value?.filter { it.read  }
+        val onlyReadFlyers = _flyers.value?.filter { it.read }
         _flyers.value = onlyReadFlyers!!
     }
-
 
 }

@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.cuvelo.shopfully.test.BuildConfig
 import com.cuvelo.shopfully.test.R
 import com.cuvelo.shopfully.test.analytics.StreamFully
 import com.cuvelo.shopfully.test.analytics.StreamFullyEvent
 import com.cuvelo.shopfully.test.databinding.FragmentDetailBinding
-import com.cuvelo.shopfully.test.ui.main.MainActivity
+import com.cuvelo.shopfully.test.ui.main.MainActivityViewModel
 import com.squareup.picasso.Picasso
 import java.util.*
 import kotlin.collections.HashMap
@@ -24,6 +25,7 @@ class DetailFragment : Fragment() {
 
     private lateinit var streamFully: StreamFully
     private var streamFullyFlyerSessionBenchmark  = 0L
+    private val mainActivityViewModel: MainActivityViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +40,7 @@ class DetailFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
 
-        (activity as MainActivity).hideReadFilterIcon()
+        mainActivityViewModel.setFilterIconVisibilityValue(false)
 
         return binding.root
     }

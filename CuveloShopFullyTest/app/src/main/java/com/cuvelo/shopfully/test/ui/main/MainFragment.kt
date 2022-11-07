@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import com.cuvelo.shopfully.test.R
 import com.cuvelo.shopfully.test.databinding.FragmentMainBinding
 import com.cuvelo.shopfully.test.ui.utils.isOnline
@@ -19,7 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-    private val viewModel: MainViewModel by viewModels()
+    private val mainFragmentViewModel: MainFragmentViewModel by viewModels()
+    private val mainActivityViewModel: MainActivityViewModel by activityViewModels()
     private lateinit var flyersAdapter: FlyersAdapter
 
     override fun onCreateView(
@@ -46,11 +47,11 @@ class MainFragment : Fragment() {
         flyersAdapter = FlyersAdapter(::navigateToDetail)
         binding.rvFlyers.adapter = flyersAdapter
 
-        viewModel.flyers.observe(viewLifecycleOwner) { flyers ->
+        mainFragmentViewModel.flyers.observe(viewLifecycleOwner) { flyers ->
             flyersAdapter.updateItems(flyers)
         }
 
-        viewModel.progressBarVisibility.observe(viewLifecycleOwner){
+        mainFragmentViewModel.progressBarVisibility.observe(viewLifecycleOwner){
             if(it){
                 binding.pbLoading.visibility = View.VISIBLE
             }
@@ -58,11 +59,20 @@ class MainFragment : Fragment() {
                 binding.pbLoading.visibility = View.GONE
             }
         }
+
+        mainActivityViewModel.showReadFilteredFlyers.observe(viewLifecycleOwner){
+            if(it){
+                filterReadFlyers()
+            }else{
+                removeFilterReadFlyers()
+            }
+        }
+
     }
 
     private fun navigateToDetail(flyerTitle: String, flyerId: String, flyerRetailerId: String, flyerRead: Boolean, position: Int){
         if(isOnline(context)){
-            viewModel.markAsRead(flyerId)
+            mainFragmentViewModel.markAsRead(flyerId)
             val action = MainFragmentDirections.actionMainFragmentToDetailFragment(flyerTitle, flyerId, flyerRetailerId, position, flyerRead)
             findNavController().navigate(action)
         }
@@ -73,18 +83,17 @@ class MainFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.getFlyers()
-        (activity as MainActivity).showReadFilterIcon()
-        (activity as MainActivity).unselectedFilterIcon()
-
+        mainFragmentViewModel.getFlyers()
+        mainActivityViewModel.setFilterIconVisibilityValue(true)
+        mainActivityViewModel.setFilterIconSelectedValue(false)
     }
 
-    fun filterReadFlyers(){
-        viewModel.filterReadFlyers()
+    private fun filterReadFlyers(){
+        mainFragmentViewModel.filterReadFlyers()
     }
 
-    fun removeFilterReadFlyers(){
-        viewModel.getFlyers()
+    private fun removeFilterReadFlyers(){
+        mainFragmentViewModel.getFlyers()
     }
 
 }

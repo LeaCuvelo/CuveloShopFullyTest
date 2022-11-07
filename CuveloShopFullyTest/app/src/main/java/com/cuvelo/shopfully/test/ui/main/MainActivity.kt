@@ -1,12 +1,11 @@
 package com.cuvelo.shopfully.test.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.navigation.findNavController
-import com.cuvelo.shopfully.test.R
 import com.cuvelo.shopfully.test.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,6 +13,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val mainActivityViewModel: MainActivityViewModel by viewModels()
+
     private var filterState = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,53 +27,40 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         with(binding) {
 
             setSupportActionBar(toolbar)
 
             ivFilterIcon.setOnClickListener {
-                val mainFragment = getMainFragment()
                 if(!filterState){
-                    mainFragment?.filterReadFlyers()
+                    mainActivityViewModel.setShowReadFilteredFlyersValue(true)
                     ivFilterIcon.isSelected = true
                     filterState = true
                 }
                 else{
-                    mainFragment?.removeFilterReadFlyers()
+                    mainActivityViewModel.setShowReadFilteredFlyersValue(false)
                     ivFilterIcon.isSelected = false
                     filterState = false
                 }
             }
         }
 
-    }
+        //Setup Observers
+        mainActivityViewModel.filterIconVisibility.observe(this) { visibility ->
+            binding.ivFilterIcon.visibility = if (visibility) View.VISIBLE else View.GONE
+        }
 
-    private fun getMainFragment(): MainFragment? {
-        val navHost = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
-        navHost?.let { navFragment ->
-            navFragment.childFragmentManager.primaryNavigationFragment?.let { fragment ->
-                if (fragment is MainFragment) {
-                    return fragment
-                }
+        mainActivityViewModel.filterIconSelected.observe(this) { selected ->
+            if(selected){
+                binding.ivFilterIcon.isSelected = true
+                filterState = true
+
+            }else{
+                binding.ivFilterIcon.isSelected = false
+                filterState = false
             }
         }
-        return null
+
     }
-
-    fun hideReadFilterIcon(){
-        binding.ivFilterIcon.visibility = View.GONE
-    }
-
-    fun showReadFilterIcon(){
-        binding.ivFilterIcon.visibility = View.VISIBLE
-    }
-
-    fun unselectedFilterIcon(){
-        binding.ivFilterIcon.isSelected = false
-        filterState = false
-    }
-
-
 
 }
