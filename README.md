@@ -12,7 +12,7 @@ In this Android project assessment the following APIs and components it will be 
     * Multimedia: Picasso
     * Pinch to zoom library: https://github.com/jsibbold/zoomage
     * DI: Hilt
-    * Unit Test: 
+    * Unit Test: Mokk
 
 
 Endpoints API consumed:
