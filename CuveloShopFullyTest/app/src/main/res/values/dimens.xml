@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Splash -->
+    <dimen name="splash_inset_value">52dp</dimen>
+
+    <!-- Main -->
+    <dimen name="main_item_height">200dp</dimen>
+    <dimen name="main_item_tittle_padding_start_end">20dp</dimen>
+    <dimen name="main_item_margin">10dp</dimen>
+    <dimen name="main_item_title_text_size">12sp</dimen>
+    <dimen name="main_error_state_title_margin">10dp</dimen>
+    <dimen name="main_error_state_title_text_size">30sp</dimen>
+    <dimen name="main_margin_read_check">5dp</dimen>
+    <dimen name="main_filter_margin_end">15dp</dimen>
+
+
+    <!-- Detail -->
+    <dimen name="detail_margin">30dp</dimen>
+    <dimen name="detail_title_text_size">30sp</dimen>
+
+
+
+
+</resources>
