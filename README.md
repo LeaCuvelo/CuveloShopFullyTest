@@ -10,6 +10,7 @@ In this Android project assessment the following APIs and components it will be 
     * DB: Room
     * Networking: Retrofit
     * Multimedia: Picasso
+    * Pinch to zoom library: https://github.com/jsibbold/zoomage
     * DI: Hilt
     * Unit Test: 
 
