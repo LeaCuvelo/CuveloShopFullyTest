@@ -10,16 +10,18 @@ class GetFlyersUseCase(private val repository: FlyersRepository) {
         val flyers = repository.getAllFromApi()
         val readFlyers = repository.getAllReadFlyers()
 
-        val readMap = readFlyers.associateBy { it.id }
-        val flyersUpdatedWithReadColumn =  flyers.map { flyer ->
-            readMap[flyer.id] ?: flyer
+        return if(flyers.isNotEmpty()){
+            val readMap = readFlyers.associateBy { it.id }
+            val flyersUpdatedWithReadColumn =  flyers.map { flyer ->
+                readMap[flyer.id] ?: flyer
+            }
+            repository.clearFlyersInDataBase()
+            repository.insertFlyersInDataBase(flyersUpdatedWithReadColumn)
+            flyersUpdatedWithReadColumn
+
+        }else{
+            repository.getAllFromDataBase()
         }
-
-        repository.clearFlyersInDataBase()
-        repository.insertFlyersInDataBase(flyersUpdatedWithReadColumn)
-
-        return flyersUpdatedWithReadColumn
     }
-
 
 }

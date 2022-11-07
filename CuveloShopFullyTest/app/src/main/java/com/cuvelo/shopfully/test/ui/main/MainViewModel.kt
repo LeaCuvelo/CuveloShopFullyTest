@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cuvelo.shopfully.data.repositories.NetworkResult
 import com.cuvelo.shopfully.domain.FlyerDataDomain
 import com.cuvelo.shopfully.usecases.GetFlyersUseCase
 import com.cuvelo.shopfully.usecases.MarkFlyerAsReadUseCase

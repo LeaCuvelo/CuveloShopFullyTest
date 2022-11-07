@@ -20,6 +20,7 @@
             android:layout_margin="@dimen/detail_margin"
             tools:text="Example Title"/>
 
+
         <ImageView
             android:id="@+id/iv_flyer_image_detail"
             android:layout_marginStart="@dimen/detail_margin"

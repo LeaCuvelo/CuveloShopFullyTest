@@ -42,7 +42,7 @@ class MainFragment : Fragment() {
         binding.rvFlyers.adapter = flyersAdapter
 
         viewModel.flyers.observe(viewLifecycleOwner) { flyers ->
-            flyersAdapter.updateItems(flyers.data)
+            flyersAdapter.updateItems(flyers)
         }
     }
 
