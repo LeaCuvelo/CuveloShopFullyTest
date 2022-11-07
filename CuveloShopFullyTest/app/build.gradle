@@ -91,6 +91,7 @@ dependencies {
 
     //DI - Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation 'androidx.test.espresso:espresso-contrib:3.4.0'
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     // Navigation Component
@@ -105,6 +106,7 @@ dependencies {
     //Picasso
     implementation "com.squareup.picasso:picasso:$picasso_version"
 
+    //Pinch to zoom library
     implementation 'com.jsibbold:zoomage:1.3.1'
 
 

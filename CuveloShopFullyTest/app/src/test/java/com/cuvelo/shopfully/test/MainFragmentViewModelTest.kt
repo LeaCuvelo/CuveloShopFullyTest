@@ -69,7 +69,6 @@ class MainFragmentViewModelTest {
 
         }returns mockedFlyerList
 
-
         //When
         mainFragmentViewModel.getFlyers()
 

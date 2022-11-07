@@ -9,6 +9,7 @@
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
+                  <entry key="Pixel_3_API_29_-_Android10" value="120" />
                   <entry key="Pixel_API_21_-_5.0" value="120" />
                   <entry key="S20" value="120" />
                   <entry key="Tests" value="360" />
