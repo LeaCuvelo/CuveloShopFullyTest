@@ -11,7 +11,7 @@
     <dimen name="main_item_title_text_size">12sp</dimen>
     <dimen name="main_margin_read_check">5dp</dimen>
     <dimen name="main_filter_margin_end">15dp</dimen>
-    <dimen name="main_list_bottom_margin">20dp</dimen>
+    <dimen name="main_list_bottom_margin">60dp</dimen>
 
 
     <!-- Detail -->
