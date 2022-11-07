@@ -22,5 +22,12 @@ class FlyersRepository(private val localFlyersDataSource: LocalFlyersDataSource,
         localFlyersDataSource.deleteAll()
     }
 
+    suspend fun markFlyerAsReadById(id: String): Int{
+        return localFlyersDataSource.markFlyerAsReadById(id)
+    }
+
+    suspend fun getAllReadFlyers(): List<FlyerDataDomain>{
+        return localFlyersDataSource.getAllReadFlyers()
+    }
 
 }

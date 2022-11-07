@@ -8,5 +8,7 @@
     <color name="secondary_variant_color">#94949a</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="green_ok_color">#0FE813</color>
+
 
 </resources>

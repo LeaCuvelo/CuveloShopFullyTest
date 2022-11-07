@@ -3,19 +3,24 @@ package com.cuvelo.shopfully.test.ui.main
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cuvelo.shopfully.data.repositories.NetworkResult
 import com.cuvelo.shopfully.domain.FlyerDataDomain
-import com.cuvelo.shopfully.test.ui.BaseViewModel
 import com.cuvelo.shopfully.usecases.GetFlyersUseCase
+import com.cuvelo.shopfully.usecases.MarkFlyerAsReadUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val getFlyersUseCase: GetFlyersUseCase) : BaseViewModel() {
+    private val getFlyersUseCase: GetFlyersUseCase,
+    private val markFlyerAsReadUseCase: MarkFlyerAsReadUseCase) : ViewModel() {
+
+    private val TAG = "MainViewModel"
 
     private val _progressBarVisibility = MutableLiveData<Boolean>()
     val progressBarVisibility: LiveData<Boolean> get() = _progressBarVisibility
@@ -23,44 +28,37 @@ class MainViewModel @Inject constructor(
     private val _errorStateVisibility = MutableLiveData<Boolean>()
     val errorStateVisibility: LiveData<Boolean> get() = _errorStateVisibility
 
-    private val _flyers = MutableLiveData<NetworkResult<List<FlyerDataDomain>>>()
+    private val _flyers = MutableLiveData<List<FlyerDataDomain>>()
     val flyers get() = _flyers
 
-
-    init {
+    fun getFlyers(){
         viewModelScope.launch {
             fetchFlyers()
         }
     }
 
     private suspend fun fetchFlyers() {
-        _flyers.value = NetworkResult.Loading()
         _progressBarVisibility.value = true
         _errorStateVisibility.value = false
-        Log.d("DEBUG","fetchFlyers LOADING")
+
+        val result  = getFlyersUseCase.invoke()
 
         try {
-            _flyers.value = NetworkResult.Success(getFlyersUseCase.invoke())
+            _flyers.value = result
             _progressBarVisibility.value = false
             _errorStateVisibility.value = false
-            Log.d("DEBUG","fetchFlyers OK")
-
         } catch (e: Exception) {
             _progressBarVisibility.value = false
             _errorStateVisibility.value = true
-            Timber.e(e)
-            _flyers.value = NetworkResult.Failure(e.message.toString())
-            Log.d("DEBUG","fetchFlyers ERROR")
-
+            _flyers.value = result
+            Log.e(TAG,e.toString())
         }
     }
 
-    fun onFlyerClicked(flyerTitle: String, flyerId: String) {
-        Log.d("DEBUG","onFlyerClicked flyerTitle: $flyerTitle")
-        //TODO NAVIGATE TO DETAIL
-
+    fun markAsRead(id: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            markFlyerAsReadUseCase.invoke(id)
+        }
     }
-
-
 
 }

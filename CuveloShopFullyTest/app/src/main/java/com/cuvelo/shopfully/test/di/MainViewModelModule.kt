@@ -2,6 +2,7 @@ package com.cuvelo.shopfully.test.di
 
 import com.cuvelo.shopfully.data.repositories.FlyersRepository
 import com.cuvelo.shopfully.usecases.GetFlyersUseCase
+import com.cuvelo.shopfully.usecases.MarkFlyerAsReadUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,4 +17,8 @@ class MainViewModelModule {
         return GetFlyersUseCase(repository)
     }
 
+    @Provides
+    fun provideMarkFlyerAsReadUseCase(repository: FlyersRepository): MarkFlyerAsReadUseCase {
+        return MarkFlyerAsReadUseCase(repository)
+    }
 }

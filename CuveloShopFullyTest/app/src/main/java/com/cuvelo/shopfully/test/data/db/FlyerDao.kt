@@ -26,4 +26,9 @@ interface FlyerDao {
     @Query("DELETE FROM FlyerDataEntity ")
     suspend fun deleteAll()
 
+    @Query("UPDATE FlyerDataEntity SET read = :readResult WHERE id = :id")
+    fun markFlyerAsReadById(id: String, readResult: Boolean): Int
+
+    @Query("SELECT * FROM FlyerDataEntity WHERE read = 1 ")
+    suspend fun getAllReadFlyers(): List<FlyerDataEntity>
 }

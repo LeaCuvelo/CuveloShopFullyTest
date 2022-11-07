@@ -7,4 +7,7 @@ interface LocalFlyersDataSource {
     suspend fun isEmpty(): Boolean
     suspend fun save(flyers: List<FlyerDataDomain>)
     suspend fun deleteAll()
+    suspend fun markFlyerAsReadById(id: String): Int
+    suspend fun getAllReadFlyers(): List<FlyerDataDomain>
+
 }

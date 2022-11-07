@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.cuvelo.shopfully.test.R
 import com.cuvelo.shopfully.test.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -30,7 +29,6 @@ class MainFragment : Fragment() {
             container,
             false)
 
-
         binding.lifecycleOwner = viewLifecycleOwner
 
         return binding.root
@@ -40,14 +38,23 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        flyersAdapter = FlyersAdapter(viewModel::onFlyerClicked)
+        flyersAdapter = FlyersAdapter(::navigateToDetail)
         binding.rvFlyers.adapter = flyersAdapter
 
         viewModel.flyers.observe(viewLifecycleOwner) { flyers ->
             flyersAdapter.updateItems(flyers.data)
         }
-
     }
 
+    private fun navigateToDetail(flyerTitle: String, flyerId: String){
+        viewModel.markAsRead(flyerId)
+        val action = MainFragmentDirections.actionMainFragmentToDetailFragment(flyerTitle, flyerId)
+        findNavController().navigate(action)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getFlyers()
+    }
 
 }

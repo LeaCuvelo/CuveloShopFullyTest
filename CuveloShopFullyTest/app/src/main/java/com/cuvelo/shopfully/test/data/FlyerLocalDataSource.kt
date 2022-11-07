@@ -27,4 +27,14 @@ class FlyerLocalDataSource(private val flyerDao: FlyerDao): LocalFlyersDataSourc
        flyerDao.deleteAll()
     }
 
+    override suspend fun markFlyerAsReadById(id: String) : Int{
+        return flyerDao.markFlyerAsReadById(id, true)
+    }
+
+    override suspend fun getAllReadFlyers(): List<FlyerDataDomain> {
+        return flyerDao.getAllReadFlyers().map {
+            it.toFlyerDataDomain()
+        }
+    }
+
 }

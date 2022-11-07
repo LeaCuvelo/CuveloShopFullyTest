@@ -7,7 +7,6 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
 }
 
-def timber_version = '5.0.1'
 def retrofit_version = '2.9.0'
 def gson_version = '2.9.1'
 def lifecycleviewmodel_version = '2.5.1'
@@ -77,9 +76,6 @@ dependencies {
 
     //Splash
     implementation "androidx.core:core-splashscreen:$splash_version"
-
-    //Timber - Logs
-    implementation "com.jakewharton.timber:timber:$timber_version"
 
     //Retrofit, Gson - Networking
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

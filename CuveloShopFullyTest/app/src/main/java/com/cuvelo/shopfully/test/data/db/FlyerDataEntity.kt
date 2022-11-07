@@ -9,5 +9,6 @@ data class FlyerDataEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id") val id: Int = 0,
     @ColumnInfo(name = "retailer_id") val retailerId: String,
-    @ColumnInfo(name = "title") val title: String
+    @ColumnInfo(name = "title") val title: String,
+    @ColumnInfo(name = "read") val read: Boolean
 )

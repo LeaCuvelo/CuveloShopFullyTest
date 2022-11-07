@@ -6,6 +6,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="flyer"
             type="com.cuvelo.shopfully.domain.FlyerDataDomain" />
@@ -38,6 +41,39 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             tools:text="Example Title"/>
+
+
+        <LinearLayout
+            android:id="@+id/ll_read_checked_container"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_read_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="@{flyer.component4() ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_read_icon"
+                android:src="@drawable/ic_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_margin_read_check"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/flyer_read_check" />
+
+            <TextView
+                android:id="@+id/tv_flyer_read_text"
+                android:text="@string/flyer_read"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/main_margin_read_check"
+                android:textColor="@color/green_ok_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -11,6 +11,22 @@
         android:name="com.cuvelo.shopfully.test.ui.main.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.cuvelo.shopfully.test.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="string" />
     </fragment>
 
 </navigation>

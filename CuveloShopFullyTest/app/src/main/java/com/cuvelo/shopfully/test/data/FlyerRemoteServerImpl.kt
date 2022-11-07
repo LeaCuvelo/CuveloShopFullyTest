@@ -10,7 +10,7 @@ class FlyerRemoteServerImpl(private val flyerRemoteServer: FlyerRemoteServer): R
         val result = flyerRemoteServer.getFlyers()
 
         return result.data.map{ flyer: FlyersDataModel ->
-            FlyerDataDomain(flyer.id, flyer.retailerId, flyer.title)
+            FlyerDataDomain(flyer.id, flyer.retailerId, flyer.title, false)
         }
     }
 }
